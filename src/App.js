@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { client } from "./client";
+import { ApolloProvider } from '@apollo/client';
+import AddTodo from './components/AddTodo';
+
+import GetTodos from './components/GetTodos';
+import { BrowserRouter, Route } from 'react-router-dom'
+import UpdateTodo from './components/UpdateTodo';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <BrowserRouter style={{ marginLeft: 50 }}>
+        <h2>My first Apollo app</h2>
+        <Route exact path="/" component={GetTodos} />
+        <Route exact path="/add" component ={AddTodo} />
+        <Route exact path="/todos/:todoId" component={UpdateTodo} />
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 

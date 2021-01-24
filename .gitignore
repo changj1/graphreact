@@ -10,6 +10,8 @@
 
 # production
 /build
+client.js
+config.js
 
 # misc
 .DS_Store
