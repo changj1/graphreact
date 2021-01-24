@@ -6,10 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Apollo Client
 
 # Memo for myself
-git init
-git add some file
-git commit -m "your message"
-git status
-git remote add origin https://yourRepository <= make connection with Github
-git push origin master
+1. git init
+2. git add some file
+3. git commit -m "your message"
+4. git status
+5. git remote add origin https://yourRepository <= make connection with Github
+6. git push origin master
 
