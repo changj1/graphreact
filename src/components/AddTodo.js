@@ -23,11 +23,10 @@ const ADD_TODO = gql`
 // `
 
 function AddTodo(props) {
-    // const { loading, error, data } = useQuery(GET_TODOS);
     const [todo, setTodo] = useState({username:'', body:''})
     const [addTodo] = useMutation(ADD_TODO,
         {
-            update(cache, {data: { createTodo }}){
+            update(cache, ){
                 cache.modify({
                     fields:{
                         getTodos(existingTodos=[]){
@@ -35,24 +34,6 @@ function AddTodo(props) {
                         }
                     }
                 })
-                
-                // cache.modify({
-                //     fields:{
-                //         getTodos(existingTodos = []){
-                //             const newTodoRef = cache.writeFragment({
-                //                 data: createTodo,
-                //                 fragment: gql`
-                //                     fragment NewgetTodos on Todo {
-                //                         body
-                //                         username
-                //                     }
-                //                 `
-                //             })
-                //             console.log('this',newTodoRef);
-                //             return [...existingTodos, newTodoRef]
-                //         }
-                //     }
-                // })
             }
         }
     );
