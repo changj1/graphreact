@@ -51,17 +51,20 @@ function UpdateTodo(props) {
     update(cache, {data:{updateTodo}}){
       cache.modify({
         fields:{
-          getTodoOne(){
-            const newTodoRef = cache.writeFragment({
-              data:updateTodo,
-              fragment: gql`
-                fragment newTodo on Todo{
-                  body
-                }
-              `
-            }) 
-            return newTodoRef
+          getTodoOne(existingTodos = []) {
+            console.log(existingTodos);
           }
+          // getTodoOne(){
+          //   const newTodoRef = cache.writeFragment({
+          //     data:updateTodo,
+          //     fragment: gql`
+          //       fragment newTodo on Todo{
+          //         body
+          //       }
+          //     `
+          //   }) 
+          //   return newTodoRef
+          // }
         }
       })
     },
@@ -69,7 +72,12 @@ function UpdateTodo(props) {
   });
   
   if (loading) return <p>Loading...</p>
-  if (error) return <p>`Error ${error.message}`</p>
+  if (error) return (
+      <div>
+        <p>`Error ${error.message}`</p>
+        <Button as={Link} to ={'/'}>Go back to List</Button>
+      </div>
+      )
 
   const onChangeValue = (e) => {
     setUpdateboby({ ...upbody, [e.target.name]: e.target.value })

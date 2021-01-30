@@ -1,6 +1,6 @@
 import { gql, useMutation,  } from '@apollo/client';
 import { useState } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 const ADD_TODO = gql`
   mutation AddTodo($username: String! $body: String!) {
@@ -34,33 +34,47 @@ function AddTodo(props) {
                         }
                     }
                 })
-            }
+            },
+            variables: todo
+
         }
     );
 
     const onSubmitValue = (e) => {
         e.preventDefault();
-        addTodo({ variables: todo });
+        addTodo();
         props.history.push("/")
     }
 
     const onChangeValue = (e) => {
         setTodo({ ...todo, [e.target.name]: e.target.value})
-
     }
 
     return (
+
         <div>
-            <form
-                onSubmit={onSubmitValue}
-            >
-                <label id="username">Username</label>
-                <input name="username" onChange={onChangeValue}  />
-                <br/>
-                <label id="body">body</label>
-                <input name="body" onChange={onChangeValue} />
-                <Button type="submit">Add Todo</Button>
-            </form>
+            <Form onSubmit={onSubmitValue}>
+                <h2>Create a post:</h2>
+                <Form.Field>
+                    <Form.Input
+                        placeholder="username"
+                        name="username"
+                        onChange={onChangeValue}
+                        value={todo.username}
+                        // error={error ? true : false}
+                    />
+                    <Form.Input
+                        placeholder="Hi World!"
+                        name="body"
+                        onChange={onChangeValue}
+                        value={todo.body}
+                        // error={error ? true : false}
+                    />
+                    <Button type="submit" color="teal">
+                        Submit
+                    </Button>
+                </Form.Field>
+            </Form>
         </div>
     );
 }
