@@ -15,7 +15,9 @@ function DeleteTodo(props) {
         update(cache) {
             cache.modify({
                 fields: {
-                    getTodos(existingTodos = []) { }
+                    getTodos(existingTodos = []) {
+                        console.log(existingTodos);
+                     }
                 }
             })
         },

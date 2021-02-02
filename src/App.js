@@ -9,6 +9,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import UpdateTodo from './components/UpdateTodo';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
+import Navbar from './components/Navbar';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter style={{ marginLeft: 50 }}>
         <Container>
           <h2>My first Apollo app</h2>
+          <Navbar/>
           <Route exact path="/" component={GetTodos} />
           <Route exact path="/add" component ={AddTodo} />
           <Route exact path="/todos/:todoId" component={UpdateTodo} />
