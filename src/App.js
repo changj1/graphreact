@@ -10,6 +10,7 @@ import UpdateTodo from './components/UpdateTodo';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import Navbar from './components/Navbar';
+import Login from './components/Login';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Navbar/>
           <Route exact path="/" component={GetTodos} />
           <Route exact path="/add" component ={AddTodo} />
+          <Route exact path="/login" component ={Login} />
           <Route exact path="/todos/:todoId" component={UpdateTodo} />
         </Container>
       </BrowserRouter>

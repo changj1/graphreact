@@ -18,24 +18,26 @@ const Navbar = () => {
                 as={Link} to={'/'}
             >
                 Home
-        </Menu.Item>
+            </Menu.Item>
 
             <Menu.Item
                 name='Add Todo'
                 active={activeItem === 'Add Todo'}
                 onClick={handleItemClick}
                 as={Link} to={'/add'}
-            >
+                >
                 Add Todo
-        </Menu.Item>
+            </Menu.Item>
 
             <Menu.Item
-                name='upcomingEvents'
-                active={activeItem === 'upcomingEvents'}
+                name='login'
+                active={activeItem === 'login'}
                 onClick={handleItemClick}
+                as={Link} to={'/login'}
             >
-                Upcoming Events
-        </Menu.Item>
+                Login
+            </Menu.Item>
+            
         </Menu>
     );
 }
